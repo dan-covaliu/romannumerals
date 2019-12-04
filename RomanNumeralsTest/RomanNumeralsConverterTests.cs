@@ -7,6 +7,14 @@ namespace RomanNumeralsTest
     [TestFixture]
     public class RomanNumeralsConverterTests
     {
+        private RomanNumeralsConverter _romanNumeralsConverter;
+
+        [SetUp]
+        public void Init()
+        {
+            _romanNumeralsConverter = new RomanNumeralsConverter();
+        }
+
         [TestCase("I",  1)]
         [TestCase("II", 2)]
         [TestCase("V", 5)]
@@ -19,11 +27,17 @@ namespace RomanNumeralsTest
         [TestCase("MMMDLXXXVIII", 3588)]
         [TestCase("MMM", 3000)]
         [TestCase("MMCMXCIX", 2999)]
-        public void TestOne(string expected, int actual)
+        public void TestUpToFourThousand(string expected, int actual)
         {
-            RomanNumeralsConverter romanNumeralsConverter = new RomanNumeralsConverter();
-            string actualString = romanNumeralsConverter.Convert(actual);
+            string actualString = _romanNumeralsConverter.Convert(actual);
             Assert.AreEqual(expected, actualString);
+        }
+
+        [TestCase("MMMM", 4000)]
+        [TestCase("MMMMI", 4001)]
+        public void TestAtLeastFourThousand(string expected, int actual)
+        {
+            Assert.Throws<ArgumentException>(() => _romanNumeralsConverter.Convert(actual));
         }
     }
 }

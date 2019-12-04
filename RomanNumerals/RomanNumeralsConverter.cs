@@ -6,10 +6,10 @@ namespace RomanNumerals
     {
         internal string[,] romanNumearals =
         {
-            {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
-            {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+            {"", "M", "MM", "MMM", "", "", "", "", "", ""},
             {"", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
-            {"", "M", "MM", "MMM", "", "", "", "", "", ""}
+            {"", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+            {"", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"},
         };
 
         public string Convert(int decimalNumber)
@@ -25,7 +25,7 @@ namespace RomanNumerals
             int wholeTens = tens / 10;
             int units = decimalNumber - wholeThousands * 1000 - wholeHundreds * 100 - wholeTens * 10;
 
-            return romanNumearals[3, wholeThousands] + romanNumearals[2, wholeHundreds] + romanNumearals[1, wholeTens] + romanNumearals[0, units];
+            return romanNumearals[0, wholeThousands] + romanNumearals[1, wholeHundreds] + romanNumearals[2, wholeTens] + romanNumearals[3, units];
         }
     }
 }

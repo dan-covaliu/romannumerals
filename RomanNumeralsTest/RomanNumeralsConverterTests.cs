@@ -1,4 +1,5 @@
 ﻿using System;
+using NFluent;
 using NUnit.Framework;
 using RomanNumerals;
 
@@ -23,7 +24,8 @@ namespace RomanNumeralsTest
         {
             RomanNumeralsConverter romanNumeralsConverter = new RomanNumeralsConverter();
             string actualString = romanNumeralsConverter.Convert(actual);
-            Assert.AreEqual(expected, actualString);
+            //Assert.AreEqual(expected, actualString);
+            Check.That(actualString).IsEqualTo(expected);
         }
     }
 }

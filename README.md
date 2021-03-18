@@ -1,6 +1,6 @@
 # Roman numerals
 
-This project was use in TDD course as a Kata to learn hot to code by starting with the test first.
+This project was used in TDD course as a Kata to learn how to code by starting with the test first.
 
 ## Getting Started
 
